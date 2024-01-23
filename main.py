@@ -49,6 +49,7 @@ class NewtLinearRegression():
             iter+=1
         self.params=W
     def predict(self,exog:np.ndarray):
+        assert isinstance(self.params,np.ndarray), 'Need to fit the model first'
         assert len(exog.shape)<=2,"x must be either 1d or 2d"
         assert exog.shape[1]+1==self.params.shape[0],"features doesn't match with params"
         return exog@self.params[1:]+self.params[0]
